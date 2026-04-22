@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Studio</title>
+    <!-- Tailwind CSS v4 Browser Compiler -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- QR Code Library for Canvas and SVG generation -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen text-[#1D1D1F] font-sans selection:bg-black selection:text-white px-8 md:px-16 pt-6 md:pt-10 pb-12">
+    <div class="max-w-7xl mx-auto flex flex-col min-h-[calc(100vh-6rem)]">
+        
+        <!-- Header -->
+        <header class="flex justify-center items-center mb-8 md:mb-12 slide-up" style="animation-delay: 0s;">
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-xl tracking-tight uppercase">QR Studio</span>
+            </div>
+        </header>
+
+        <!-- Main Content: Split Layout -->
+        <main class="flex-1 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-center w-full">
+            
+            <!-- Left Column: Input and Info -->
+            <div class="w-full lg:w-[50%] xl:w-[45%] max-w-xl lg:max-w-none slide-up" style="animation-delay: 0.2s;">
+                <div class="space-y-10">
+                    
+                    <div class="space-y-3">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Content or Data</label>
+                        <div class="relative">
+                            <textarea
+                                id="qr-input"
+                                placeholder="https://apple.com/iphone-15..."
+                                class="input-field w-full text-lg p-5 resize-none min-h-[140px]"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+                        <div class="space-y-3">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Error Correction</label>
+                            <div class="grid grid-cols-4 gap-2" id="error-options"></div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Format</label>
+                            <div class="grid grid-cols-2 gap-2" id="format-options"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Resolution</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 text-center" id="resolution-options"></div>
+                    </div>
+
+                </div>
+
+                <!-- History Preview -->
+                <div id="history-container" class="pt-8 border-t border-gray-200 mt-10 space-y-4 hidden fade-in">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-gray-400 inline-block">Recent</label>
+                    <div class="flex flex-wrap gap-2" id="history-list"></div>
+                </div>
+            </div>
+
+            <!-- Right Column: QR Preview Card -->
+            <div class="w-full lg:w-[50%] xl:w-[45%] flex justify-center lg:justify-end max-w-xl lg:max-w-none">
+                <div id="preview-container" class="w-full flex justify-center lg:justify-end">
+                    <!-- Dynamic preview content -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
